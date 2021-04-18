@@ -16,6 +16,9 @@ function setup() {
 
 function draw() {
   background(51);
+  if (snake.eatsFood(food)) {
+    pickFoodLocation();
+  };
   snake.update();
   snake.show();
   fill(255, 0, 0);
