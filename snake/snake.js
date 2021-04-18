@@ -3,6 +3,8 @@ class Snake {
     this.pos = createVector(0, 0);
     this.xSpeed = SCL;
     this.ySpeed = 0;
+    this.total = 0;
+    this.tail = [];
   }
 
   moveDir(xDir, yDir) {
@@ -13,6 +15,7 @@ class Snake {
   eatsFood(foodPos) {
     let d = dist(this.pos.x, this.pos.y, foodPos.x, foodPos.y);
     if (d < 1) {
+      this.total++;
       return true;
     } else {
       return false;
@@ -22,6 +25,9 @@ class Snake {
   losesTail() { }
 
   update() {
+    if (this.total > 0) {
+      this.tail[this.total - 1] = this.pos.copy();
+    };
     const tempX = this.pos.x + this.xSpeed;
     const tempY = this.pos.y + this.ySpeed;
     this.pos.x = constrain(tempX, 0, width - SCL);
