@@ -25,6 +25,11 @@ class Snake {
   losesTail() { }
 
   update() {
+    if (this.total === this.tail.length) {
+      for (let i = 0; i < this.tail.length - 1; i++) {
+        this.tail[i] = this.tail[i + 1];
+      };
+    }
     if (this.total > 0) {
       this.tail[this.total - 1] = this.pos.copy();
     };
@@ -37,6 +42,9 @@ class Snake {
   show() {
     fill(255);
     rect(this.pos.x, this.pos.y, SCL, SCL);
+    for (let i = 0; i < this.tail.length; i++) {
+      rect(this.tail[i].x, this.tail[i].y, SCL, SCL);
+    };
   }
 
 
