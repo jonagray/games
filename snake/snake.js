@@ -22,7 +22,17 @@ class Snake {
     };
   }
 
-  losesTail() { }
+  losesTail() {
+    for (let i = 0; i < this.tail.length; i++) {
+      const d = this.pos.dist(this.tail[i]);
+      if (d < 1) {
+        this.total = 0;
+        this.tail = [];
+        return true;
+      }
+    }
+    return false;
+  }
 
   update() {
     if (this.total === this.tail.length) {

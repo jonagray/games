@@ -23,6 +23,7 @@ function draw() {
   snake.show();
   fill(255, 0, 0);
   rect(food.x, food.y, SCL, SCL);
+  snake.losesTail();
 };
 
 function keyPressed() {
